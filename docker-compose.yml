@@ -1,5 +1,11 @@
 version: "3"
 services:
+    php:
+        build: .
+        volumes:
+            - "./current:/code"
+            - "./nginx/conf/zz-docker.conf:/usr/local/etc/php-fpm.d/zz-docker.conf"
+            - "./phpsocket:/var/run"
     web:
         image: "nginx"
         ports:
@@ -10,9 +16,3 @@ services:
             - "./phpsocket:/var/run"
         links:
             - "php"
-    php:
-        image: "php:7.3-fpm"
-        volumes:
-            - "./current:/code"
-            - "./nginx/conf/zz-docker.conf:/usr/local/etc/php-fpm.d/zz-docker.conf"
-            - "./phpsocket:/var/run"
