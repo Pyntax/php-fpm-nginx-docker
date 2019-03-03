@@ -7,3 +7,5 @@ RUN apt install -y git unzip
 
 RUN curl -sS https://getcomposer.org/installer -o composer-setup.php
 RUN php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+
+COPY ./scripts/codedeploy.sh /usr/bin/codedeploy.sh
